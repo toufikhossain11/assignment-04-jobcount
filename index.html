@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job-Tracker-Website</title>
+
+    <!-- font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <!-- icon -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- telwind and deisyUI -->
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+     <!-- style -->
+      <style>
+        *{
+            font-family: "Outfit", sans-serif;
+        }
+        .hidden{
+            display: none;
+        }
+      </style>
+</head>
+<body class="max-w-6xl mx-auto">
+    <!-- header-part -->
+    <header class="pt-6">
+        <h2 class="text-accent-content font-bold text-[32px] pb-3 ">Job Application Tracker</h2>
+        <div class="flex space-x-4">
+            <div class="card bg-neutral text-primary-content w-96">
+                <div class="card-body">
+                    <p class="text-[15px] font-bold">Total</p>
+                    <h2 id="total-number" class=" text-[25px] font-bold">0</h2>
+                </div>
+            </div>
+            <div class="card  bg-green-500 text-primary-content w-96">
+                <div class="card-body">
+                    <p class="text-[15px] font-bold">Interview</p>
+                    <h2 id="interview-count" class="text-[25px] font-bold">0</h2>
+                </div>
+            </div>
+            <div class="card bg-error text-primary-content w-96">
+                <div class="card-body">
+                    <p class="text-[15px] font-bold ">Rejected</p>
+                    <h2 id="rejected-count" class="text-[25px] font-bold">0</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- -job-tital -->
+    <section>
+        <div class="flex justify-between pt-4">
+            <h3 class="font-bold text-[18px]">Available Jobs</h3>
+            <p class="font-bold"><span id="total-card">0</span> jobs</p>
+        </div>
+        <div class="space-x-2 pt-4">
+           <input id="all-btn" type="radio" name="opt" class="btn px-9" aria-label="All" checked>
+           <input id="interview-btn" type="radio" name="opt" class="btn" aria-label="Interview">
+           <input id="rejected-btn" type="radio" name="opt" class="btn" aria-label="Rejected">
+        </div>
+    </section>
+    <!-- card -->
+    <section id="job-card" class=" py-6 max-w-[1120px] mx-auto ">
+
+          <div class="p card-number card card-border bg-base-300 mb-6">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">Mobile First Corp</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>React Native Developer</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start ">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+          <div class="p card-number card card-border bg-base-300 mb-6 ">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">WebFlow Agency</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>Web Designer & Developer</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+          <div class="p card-number card card-border bg-base-300 mb-6 ">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">DataViz Solutions</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>Data Visualization Specialist</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+          <div class="p card-number card card-border bg-base-300 mb-6 ">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">CloudFirst Inc</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>Backend Developer</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+          <div class="p card-number card card-border bg-base-300 mb-6 ">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">Innovation Labs</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>UI/UX Engineer</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+          <div class="p card-number card card-border bg-base-300 mb-6 ">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">MegaCorp Solutions</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>JavaScript Developer</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+          <div class="p card-number card card-border bg-base-300 mb-6 ">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">StartupXYZ</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>Full Stack Engineer</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+          <div class="p card-number card card-border bg-base-300 mb-6 ">
+            <div class="card-body">
+                 <div class="flex justify-between">
+                    <h2 class="card-title font-bold">TechCorp Industries</h2>
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                </div >
+                 <h2>Senior Frontend Developer</h2>
+                 <p class="text-[12px] text-base">Remote • Full-time • $130,000 - $175,000</p>
+                 <div class="card-btn">
+                    <button class="b1"></button>
+                </div>
+                 <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+              <div class="card-actions justify-start">
+                <button id="" class="btn-interview btn btn-outline btn-success">interview</button>
+                <button id="" class="btn-rejected btn btn-outline btn-error">Rejected</button> 
+              </div>
+            </div>
+          </div>
+
+    </section>
+    <!-- emty-card -->
+    <section id="emty-card" class="hidden py-6 max-w-[1120px] mx-auto">
+        <div id="new-card"></div>
+     <div class="card bg-base-300 text-neutral ">
+        <div class="card-body items-center text-center my-[80px] ">
+            <img src="./jobs.png" alt="">
+             <h2 class="card-title">No jobs available</h2>
+             <p>Check back soon for new job opportunities</p>
+        </div>
+    </div>
+   </section>
+
+    <script src="./script/script.js"></script>
+</body>
+</html>
