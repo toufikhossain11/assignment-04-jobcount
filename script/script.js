@@ -1,85 +1,108 @@
+let currentTab ='all'
+const tabActive = ['bg-green-500','text-white'];
+const tabInactive = ['bg-transparent','border-green-300','text-slate-700','border-state-200','text-black'];
 
-//total-card-count
-const totalcard = document.getElementsByClassName('card-number');
-const number = document.getElementById('total-number');
-number.innerText = totalcard.length;
-const totalNumbarJob = document.getElementById('total-card');
-totalNumbarJob.innerText = totalcard.length;
-//all-btn
-document.getElementById('all-btn')
-  .addEventListener('click',function(){
- const jobCard = document.getElementById('job-card');
- const btn = document.getElementById('emty-card');
- jobCard.classList.remove('hidden');
- btn.classList.add('hidden')
-})
 
-//interview-btn-clickable
-document.getElementById('interview-btn')
-  .addEventListener('click',function(){
- const jobCard = document.getElementById('job-card');
- const btn = document.getElementById('emty-card');
- jobCard.classList.add('hidden');
- btn.classList.remove('hidden')
-})
-//reject-btn-clickable
-document.getElementById('rejected-btn')
-  .addEventListener('click',function(){
- const jobCard = document.getElementById('job-card');
- const btn = document.getElementById('emty-card');
- jobCard.classList.add('hidden');
- btn.classList.remove('hidden')
-})
+const allContiner = document.getElementById('job-card');
+const emtyCard = document.getElementById('emty-card');
 
-// interview-btn
-let interviewCount = 0;
-let rejectedCount = 0;
-document.querySelectorAll(".btn-interview").forEach(btn => {
-  btn.addEventListener("click", function () {
-    const card = this.closest(".p");
-    const t = card.querySelector(".card-btn");
-    t.innerHTML = `
-    <button class="btn btn-xs bg-green-500">Interview</button>
-    `;
-    const interviewBtn = document.getElementById('new-card');
-    interviewBtn.appendChild(card);
+const interviewContener = document.getElementById('interview-contener');
+const rejectedContener = document.getElementById('rejected-contener');
 
-    if (card.classList.contains("interviewed")) 
-      return;
-    if (card.classList.contains("rejected")) {
-      rejectedCount--;
-      document.getElementById("rejected-count").innerText = rejectedCount;
+
+const allbtn = document.getElementById('btn-all');
+
+const interviewbtn = document.getElementById('btn-interview')
+const rejectedbtn = document.getElementById('btn-rejected');
+function switchTab (tab){
+    const tabs =["all","interview","rejected"];
+    currentTab=tab;
+    for (const t of tabs) {
+        const tabeName = document.getElementById('btn-' + t);
+        console.log(tabeName)
+        if(t === tab){
+            tabeName.classList.remove(...tabInactive);
+            tabeName.classList.add(...tabActive);
+        }else{
+            tabeName.classList.add(...tabInactive);
+            tabeName.classList.remove(...tabActive);
+        
+        }
+        }
+        const pages =[allContiner,emtyCard ]
+        for (const section of pages) {
+            section.classList.add('hidden')
+        }
+        emtyCard.classList.add('hidden')
+         if(tab === 'all'){
+             allContiner.classList.remove('hidden'); 
+             rejectedContener.classList.add('hidden');
+             interviewContener.classList.add('hidden'); 
+             if(allContiner.children.length<1){
+                emtyCard.classList.remove('hidden');
+             }        
+         }else if(tab === 'interview'){
+            interviewContener.classList.remove('hidden');
+            rejectedContener.classList.add('hidden');
+            if(interviewContener.children.length<1){
+                emtyCard.classList.remove('hidden');
+            }
+            
+         }else{
+            interviewContener.classList.add('hidden');
+            rejectedContener.classList.remove('hidden');
+            if(rejectedContener.children.length<1){
+                emtyCard.classList.remove('hidden');
+            }
+        }
+        updatesate();
+ }
+
+//add-btn
+document.getElementById('job-card').addEventListener('click',function(event){
+    const clickedEliment = event.target;
+    const card = clickedEliment.closest('.card');
+    const parent = card.parentNode;
+    const status = card.querySelector('.s');
+    // console.log(card);
+    if(clickedEliment.classList.contains('interview-btn')){
+        interviewContener.appendChild(card);
+        status.innerText = 'interviewed'; 
+                 
+
     }
-    interviewCount++;
-    document.getElementById("interview-count").innerText = interviewCount;
-    card.classList.add("interviewed");
-    card.classList.remove("rejected");
-  });
-});
-// reject-btn
-document.querySelectorAll(".btn-rejected").forEach(btn => {
-  btn.addEventListener("click", function () {
-
-    const card = this.closest(".p");
-    const t = card.querySelector(".card-btn");
-
-    t.innerHTML = `
-    <button class="btn btn-xs bg-error">Rejected</button>
-    `;
-    const interviewBtn = document.getElementById('new-card');
-    interviewBtn.appendChild(card);
-
-    if (card.classList.contains("rejected")) 
-      return;
-
-    if (card.classList.contains("interviewed")) {
-      interviewCount--;
-      document.getElementById("interview-count").innerText = interviewCount;
+    else if(clickedEliment.classList.contains('rejected-btn')){
+        rejectedContener.appendChild(card);
+        status.innerText = 'rejected';
     }
-    rejectedCount++;
-    document.getElementById("rejected-count").innerText = rejectedCount;
+    else if(clickedEliment.classList.contains('delete-btn')){
+        parent.removeChild(card);
+    }updatesate()
+})
+//count function
+const sidetotalcount = document.getElementById('total-card');
+const totalCount = document.getElementById('total-count');
+const interviewCount = document.getElementById('interview-count');
+const rejectedCount = document.getElementById('rejected-count');
+function updatesate(){
+    totalCount.innerText=allContiner.children.length;
+    interviewCount.innerText=interviewContener.children.length;
+    rejectedCount.innerText=rejectedContener.children.length;
+    const counts = {
+        all:allContiner.children.length,
+        interview:interviewContener.children.length,
+        rejected:rejectedContener.children.length,
+    }
+    totalCount.innerText=counts.all;
+    interviewCount.innerText=counts.interview;
+    rejectedCount.innerText=counts.rejected;
 
-    card.classList.add("rejected");
-    card.classList.remove("interviewed");
-  });
-});
+    sidetotalcount.innerText = counts[currentTab];
+    if(counts[currentTab]<1){
+        emtyCard.classList.remove('hidden');
+    }else{
+        emtyCard.classList.add('hidden');
+    }
+}
+switchTab(currentTab);
+updatesate();
